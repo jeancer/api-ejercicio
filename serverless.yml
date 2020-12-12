@@ -1,0 +1,25 @@
+
+service: api-ejercicio
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-2
+
+functions:
+  load:
+    handler: app/controllers/PersonaController.load
+    events:
+      - http:
+          path: load
+          method: post
+
+  recover:
+    handler: app/controllers/PersonaController.recover
+    events:
+      - http:
+          path: recover
+          method: get
+
